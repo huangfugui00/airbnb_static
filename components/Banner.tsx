@@ -13,7 +13,7 @@ const Banner = () => {
             />
            <div className={`${styles.middle}`}>
                 <p>Not sure where to go?Perfect.</p>
-                <Button className={styles.button}>I'm flexible</Button>
+                <Button className={styles.button}>flexible</Button>
             </div> 
         </div>
         
