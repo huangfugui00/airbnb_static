@@ -13,13 +13,10 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.brand}>
-                {/* <Image src='https://links.papareact.com/qd3' */}
-
-                <Image src="/assets/airbnb.png"
+                <Image src="https://links.papareact.com/qd3"
                objectFit="contain"
                objectPosition="left"
-               height={40}
-               width={150}
+               layout="fill"
                />
             </div>
             {/* search */}

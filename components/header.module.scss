@@ -4,6 +4,9 @@
     align-items: center;
     justify-content: space-between;
     .brand{
+        height: 2rem;
+        width: 5rem;
+        position: relative;
         &:hover{
             cursor: pointer;
         }

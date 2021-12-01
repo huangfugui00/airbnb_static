@@ -10,8 +10,8 @@ type nearbyProp = {
 const Nearby = ({nearby}:nearbyProp) => {
     return (
               <div className={`${styles.nearby} sm:container mx-auto`}>
-                <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
-                <div className={`${styles.sm_group} gap-4 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}>
+                <h2>Explore Nearby</h2>
+                <div className={`${styles.sm_group} gap-4 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}>
                 {
                    nearby? nearby.map((item,index)=>
                 <SmallCart cart={item} key={index}/>):<></>
@@ -31,11 +31,11 @@ const SmallCart = ({cart}:smallCartProp)=>{
     return(
         <div className={styles.small_cart}>
                 {/* left */}
-            <div className={styles.cart_img}>
-                <Image src={img} className={ styles.img} height={100} width={100}/>
+            <div className={styles.cart_img}>            
+                <Image src={img} className={ styles.img} layout="fill"/>
             </div>
             <div className={styles.text}>
-                <h2>{location}</h2>
+                <h3>{location}</h3>
                 <p>{distance}</p>  
             </div>
         </div>

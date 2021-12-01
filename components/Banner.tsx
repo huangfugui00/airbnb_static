@@ -7,7 +7,7 @@ const Banner = () => {
     return (
         <div className={styles.banner}>
             {/* sasa */}
-            <Image src='/assets/banner.webp' layout="fill"
+            <Image src='http://links.papareact.com/0fm' layout="fill"
             objectFit="cover"
             className={styles.image}
             />

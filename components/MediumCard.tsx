@@ -27,7 +27,9 @@ const CartItem = ({cartItem}:cartItemProp)=>{
     const {img,title} = cartItem
     return(
         <div className={styles.cart_item}>
-            <Image className={styles.img} src={img} layout='fixed' width={400} height={400}/>
+            <div className={styles.cart_img}>
+                <Image className={styles.img} src={img} layout='fill'/>
+            </div>
             <h2>{title}</h2>
         </div>
     )

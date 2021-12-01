@@ -3,7 +3,7 @@ import styles from './footer.module.scss'
 
 const Footer = () => {
     return (
-        <div className={styles.footer}>
+        <div className={`${styles.footer} gap-4 justify-items-start lg:justify-items-center grid grid-cols-2 lg:grid-cols-4 `}>
             <div>
                 <h5>About</h5>
                 <p>How Airbnb work</p>

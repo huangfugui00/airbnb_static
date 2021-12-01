@@ -1,23 +1,25 @@
 .medium_cart{
 
-    padding-left: 1rem;
+    padding-left: 1vw;
     margin-top: 2rem;
     h2{
-        font-size: 2rem;
+        font-size: calc(15px + 1vw);
         font-weight: bolder;
     }
     .cart_group{
         display: flex;
         gap:1rem;
-       
-       
+        margin-top: 1rem;
     }
    
 }
 
 .cart_item{
-    position: relative;
-    // overflow: auto;
+    .cart_img{
+        height: calc(4rem + 15vw);
+        width: calc(4rem + 15vw);
+        position: relative;
+    }
     &:hover{
         transform: scale(1.05);
         background-color: whitesmoke;
@@ -28,7 +30,7 @@
         width: 100%;
     }
     h2{
-        font-size: 1rem;
+        font-size: calc(10px + 1vw);
         color:grey;
     }
 }

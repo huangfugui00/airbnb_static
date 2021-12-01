@@ -1,12 +1,14 @@
 .nearby{
-    margin-top: 2rem;
-    padding-left: 1rem;
-}
+    margin-top: calc(2vw + 1rem);
+    padding-left: 1vw;
+    h2{
+        font-size: calc(15px + 1vw);
+        font-weight: bolder;
+        margin-bottom: calc(1vw + 1rem);
+    }
 
-
-
+    
 .small_cart{
-    margin-top: 2rem;
     display: flex;
     gap:1rem;
     align-items: center;
@@ -18,20 +20,26 @@
 
     .cart_img{
         position: relative;
+        height: calc(2rem + 4vw);
+        width: calc(2rem + 4vw);
         .img{
             border-radius: 20px;;
-            width: 100%;
         }
     }
    
     .text{
-        h2{
+        // position: absolute;
+   
+        h3{
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: calc(1vw + 10px);
         }
         p{
             color:grey;
-            font-size: 1rem;
+            font-size: calc(1vw + 5px);
         }
     }
 }
+}
+
+

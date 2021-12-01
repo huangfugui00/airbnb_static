@@ -1,12 +1,12 @@
 .footer{
-    display: flex;
-    justify-content: space-around;
     background-color: whitesmoke;
-    padding:2rem;
+    padding:2rem 0 ;
+    // padding-bottom: 2rem;
+    padding-left: 1vw;
   
     h5{
         margin:1rem 0;
-        font-size: 1.5rem;
+        font-size: calc(1vw + 10px);
         font-weight: bolder;
         &:hover{
             cursor: pointer;
