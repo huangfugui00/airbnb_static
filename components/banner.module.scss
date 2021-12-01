@@ -1,0 +1,22 @@
+.banner{
+    position: relative;
+    height: calc(20vw + 300px);
+    .middle{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top:50%;
+        font-weight: bolder;
+        font-size: calc(1vw + 10px );
+        .button{
+            margin-top: 1rem;
+            color:plum;
+            background-color: white;
+            padding:0.5rem 1rem;
+            font-size: calc(1vw + 15px );
+            border-radius: 50px;;
+            text-transform: none;
+        }
+    }
+
+}

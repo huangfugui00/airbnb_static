@@ -1,0 +1,22 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    padding:2rem;
+  
+    h5{
+        margin:1rem 0;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    p{
+        margin-top: 0.5rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+}
