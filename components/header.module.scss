@@ -46,34 +46,28 @@
       
         }
     }
-
-
-
-
 }
 
 
 
-@media  (max-width: 768px) {
-    .header{
+@media  (max-width: 500px ) {
+    .header{     
         .search {
-            justify-content:start;
             border:none;
+            
             input{
                 padding:0.2rem 1rem;
                 border: 1px grey solid;
                 border-radius: 20px;
             }
         }
-
         .icon_group{
-            .host{
-                // p{
-                    display: none;
-                // }
-            }
+            display: none;
         }
     }
 
 
-  }
+}
+
+
+

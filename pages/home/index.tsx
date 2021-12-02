@@ -14,7 +14,7 @@ import { mediumCartType } from '../../types/mediumCart'
 // const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:7890');
 
 // export async function getStaticProps<GetStaticProps>() {
-  
+    
 //     console.log("getStaticProps()");
 //     let smallCarts = await nodeFetch('https://links.papareact.com/pyp', { agent: proxyAgent})
 //     smallCarts = await smallCarts.json();
@@ -30,7 +30,6 @@ import { mediumCartType } from '../../types/mediumCart'
 //             mediumCartsApi
 //         }
 //     }    
-
 // }
 
 const Home = ({smallCarts,mediumCartsApi}:InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -64,6 +63,7 @@ export async function getStaticProps<GetStaticProps>() {
     console.log("getStaticProps()");
     const smallCarts = await fetch('https://links.papareact.com/pyp')
     .then(res=>res.json())
+
 
     const mediumCartsApi = await fetch('https://links.papareact.com/zp1')
         .then(res=>res.json())
