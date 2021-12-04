@@ -11,10 +11,14 @@ type productProp={
 
 const Product = ({product}:productProp) => {
     return (
+    <div>
+        {product?
         <div className="flex flex-col gap-2 ">
             {/* image */}
             <div className='relative  h-96 lg:h-72 md:h-72 sm:h-80 transform hover:-translate-y-1 hover:scale-105 transition duration-1000 ease-in-out'>
-                <Image className="rounded-xl object-contain md:object-scale-down " src={product.photos[0]} alt={product.uuid} layout="fill" objectFit="cover"/>
+                    <Image className="rounded-xl object-contain md:object-scale-down " src={product.photos[0]} alt={product.uuid} layout="fill" objectFit="cover"/>
+                    :
+                    <></>
                 <IconButton className="absolute top-4 right-4 z-1 ">
                 <FavoriteBorderIcon sx={{ color: 'white' ,  }}  className="bg-opacity-30"/>
                 </IconButton>
@@ -36,6 +40,9 @@ const Product = ({product}:productProp) => {
                 </div>
             </div>
         </div>
+        :<></>}
+    </div>
+        
     )
 }
 

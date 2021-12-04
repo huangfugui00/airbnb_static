@@ -42,12 +42,12 @@ const CategoryMenu = ({anchorEl,open,handleClose,categories}:categoryMenuProp)=>
 
       >
         {
-            categories.map((category,index)=>
+            categories?categories.map((category,index)=>
             <MenuItem onClick={handleClose} key={index} className="flex gap-2 ">
                 <Image  src={category.icon} alt={category.name} layout="fixed" height={15} width={15}/>
                 <span className='text-xs'>{category.name}</span>
             </MenuItem>
-            )
+            ):<></>
         }
       </Menu>
 
@@ -70,12 +70,14 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
     };
     const number = typeof window === "undefined" ?0: Math.floor(0.7*window.innerWidth/130)
 
+   
+
     return (
         <div className="flex items-center justify-between " ref={containeRef}>
             {/* categories */}
             <div className='flex '>  
 
-                {categories.slice(0,number).map((category,index)=>
+                {categories?categories.slice(0,number).map((category,index)=>
                 <div key={index} className="-ml-2.5">
                     <Button className='rounded' onClick={()=>setSelCategory(category.name)}>
                     {selCategory===category.name&&<Image  src={category.icon} alt={category.name} layout="fixed" height={20} width={20}/>}
@@ -84,7 +86,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
                         </span>
                     </Button>
                 </div>
-                )}
+                ):<></>}
 
                 <Button
                  className='rounded'
@@ -102,7 +104,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
 
                 <CategoryMenu 
                 anchorEl={anchorEl} open={open} handleClose={handleClose}
-                categories={categories.slice(number)}
+                categories={categories?categories.slice(number):categories}
                 />
 
             </div>
@@ -117,7 +119,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
                     {selTag==='time'?<ExpandLessIcon fontSize="small" className='hidden lg:block'/>:<ExpandMoreIcon fontSize="small" className='hidden lg:block' />}
                 </Button>
                 <Button color="inherit" variant='outlined' 
-                onClick={()=>setSelTag('guest')}
+                onClick={()=>setSelTag('gue/searchModel/component/NavRow')}
                 className={`rounded-full text-sm normal-case ${selTag==='guest'?'bg-gray-100 border-2 border-black text-black':'border-gray-300 text-grey-500'}`}
                 >
                     <span className="text-black">Guests</span>

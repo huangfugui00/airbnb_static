@@ -18,13 +18,10 @@ function api(){
       return response.data
     },
     (error) => {//服务端出错时会触发
-      if (error.response.status === 401) {
+      if (error&&error.response&&error.response.status === 401) {
         localStorage.removeItem('token')
       }
-      if(error.response.data===undefined){
-        error.response.data.data = error.response.statusText
-      }
-      return error.response.data
+      return error.response
     }
   )
   return axiosInstance

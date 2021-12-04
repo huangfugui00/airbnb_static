@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './banner.module.scss'
+import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@mui/material/Button'
 
@@ -13,7 +14,11 @@ const Banner = () => {
             />
            <div className={`${styles.middle}`}>
                 <p>Not sure where to go?Perfect.</p>
-                <Button className={styles.button}>flexible</Button>
+               <Link href="/searchModel">
+                <a>
+                    <Button className={styles.button}>flexible</Button>
+                </a>
+                </Link>
             </div> 
         </div>
         

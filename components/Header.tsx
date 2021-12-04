@@ -11,6 +11,7 @@ import Button from '@mui/material/Button'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
+import Link from 'next/link'
 
 const Header = () => {
 
@@ -32,12 +33,16 @@ const Header = () => {
         <div className="border-b mb-8">
         <header className={`${styles.header} sm:container mx-auto`}>
             <div className={styles.brand}>
+            <Link href="/">
+                <a>
                 <Image src="/assets/airbnb.png"
                 // <Image src="https://links.papareact.com/qd3"
                objectFit="contain"
                objectPosition="left"
                layout="fill"
                />
+               </a>
+            </Link>
             </div>
             {/* search */}
             <div className={styles.search}>
