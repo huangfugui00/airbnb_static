@@ -68,7 +68,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
     const handleClose = () => {
       setAnchorEl(null);
     };
-    const number = Math.floor(0.7*window.innerWidth/130)
+    const number = typeof window === "undefined" ?0: Math.floor(0.7*window.innerWidth/130)
 
     return (
         <div className="flex items-center justify-between " ref={containeRef}>

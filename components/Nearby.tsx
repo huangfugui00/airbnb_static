@@ -32,7 +32,7 @@ const SmallCart = ({cart}:smallCartProp)=>{
         <div className={styles.small_cart}>
                 {/* left */}
             <div className={styles.cart_img}>            
-                <Image src={img} className={ styles.img} layout="fill"/>
+                <Image src={img} className={ styles.img} layout="fill" />
             </div>
             <div className={styles.text}>
                 <h3>{location}</h3>
