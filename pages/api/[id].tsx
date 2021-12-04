@@ -13,7 +13,8 @@ export default function handler(
     // Process a POST request
   } else {
     // Handle any other HTTP method
-  res.status(200).json({ name: 'John Doe' })
+  const { pid } = req.query
+  res.end(`Post: ${pid}`)
 
   }
 }

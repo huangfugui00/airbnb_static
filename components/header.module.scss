@@ -1,11 +1,12 @@
 .header{
-    padding: 1rem;
     display: flex;
+    padding-top:1.5rem;
+    padding-bottom: 1.5rem;
     align-items: center;
     justify-content: space-between;
     .brand{
         height: 2rem;
-        width: 5rem;
+        width: 10rem;
         position: relative;
         &:hover{
             cursor: pointer;
@@ -28,24 +29,50 @@
     }
 
     .icon_group{
-        color: grey;
+        color: black;
         display: flex;
         align-items: center;
-        gap:1rem;
+        gap:0.25rem;
         .host{
-            color:grey;
+            color:black;
+            font-weight: bolder;
             text-transform: none;
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
 
         .menu_person{
+            margin-left: 0.5rem;
             display: flex;
             align-items: center;
             border: 1px solid grey;
             border-radius: 20px;
-      
         }
     }
+}
+
+.modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    .calendar{
+        position: relative;
+    }
+    .guests{
+        width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2{
+            font-weight: bolder;
+        }
+        input{
+            width: 2.5rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    
 }
 
 

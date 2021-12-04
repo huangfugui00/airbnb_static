@@ -21,7 +21,6 @@ const LargerCart = ({img,title,description,btn_text}:largeCartProp) => {
                 <Button className={styles.btn}>{btn_text}</Button>  
             </div>
         </div>
-       
     )
 }
 

@@ -1,11 +1,11 @@
 .footer{
-    background-color: whitesmoke;
+    // background-color: whitesmoke;
     padding:2rem 0 ;
     padding-left: 1vw;
   
     h5{
         margin:1rem 0;
-        font-size: calc(1vw + 10px);
+        font-size: 1rem;
         font-weight: bolder;
         &:hover{
             cursor: pointer;
@@ -13,6 +13,7 @@
     }
     p{
         margin-top: 0.5rem;
+        font-size: 0.75rem;
         &:hover{
             cursor: pointer;
         }
@@ -23,7 +24,7 @@
 @media  (max-width: 500px ) {
 
     .footer{
-        background-color: whitesmoke;
+        // background-color: whitesmoke;
         padding:1rem 0 ;
         padding-left: 1vw;
       
