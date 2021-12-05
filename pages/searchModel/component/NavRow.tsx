@@ -10,22 +10,21 @@ import FilterListOffIcon from '@mui/icons-material/FilterListOff';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useElementSize,useWindowSize } from 'usehooks-ts'
+import { makeStyles } from '@mui/styles';
 
-type navRowProp = {
-    categories:categoryType[]
-    selCategory:string,
-    setSelCategory:(selCategory:string)=>void,
-    selTag:string,
-    setSelTag:(selTag:string)=>void,
-}
 
+
+
+
+
+
+//category
 
 type categoryMenuProp = {
     anchorEl:null | HTMLElement,
     open: boolean,
     handleClose:()=>void,
     categories:categoryType[],
-    // handleClick:(event: React.MouseEvent<HTMLButtonElement>)  =>void,
 }
 
 const CategoryMenu = ({anchorEl,open,handleClose,categories}:categoryMenuProp)=>{
@@ -54,8 +53,18 @@ const CategoryMenu = ({anchorEl,open,handleClose,categories}:categoryMenuProp)=>
     )
 }
 
+//navrow
+type navRowProp = {
+    categories:categoryType[],
+    selCategory:string,
+    setSelCategory:(selCategory:string)=>void,
+    selTag:string,
+    setSelTag:(selTag:string)=>void,
+}
 
 const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowProp) => {
+
+
     const [squareRef, element] = useElementSize()
     const [containeRef, container] = useElementSize()
     const { width, height } = useWindowSize()
@@ -113,13 +122,17 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
             <div className='flex gap-2'>
                 <Button  color="inherit" variant='outlined'
                 onClick={()=>setSelTag('time')}
-                className={`rounded-full text-sm normal-case ${selTag==='time'?'bg-gray-100 border-2 border-black text-black':'border-gray-300 text-grey-500'}`}
+                sx={{borderRadius:'50px',fontSize:'0.875rem',textTransform:'none',
+                borderColor:`${selTag==='time'?'black':'rgba(209, 213, 219,1)'}`,
+                borderWidth:`${selTag==='time'?'2px':'1px'}`,
+                backgroundColor:`${selTag==='time'?'rgba(209, 213, 219,0.2)':'white'}`,
+                }}
                 >
                     <span className="text-black">Anytime</span>
                     {selTag==='time'?<ExpandLessIcon fontSize="small" className='hidden lg:block'/>:<ExpandMoreIcon fontSize="small" className='hidden lg:block' />}
                 </Button>
                 <Button color="inherit" variant='outlined' 
-                onClick={()=>setSelTag('gue/searchModel/component/NavRow')}
+                onClick={()=>setSelTag('guest')}
                 className={`rounded-full text-sm normal-case ${selTag==='guest'?'bg-gray-100 border-2 border-black text-black':'border-gray-300 text-grey-500'}`}
                 >
                     <span className="text-black">Guests</span>
