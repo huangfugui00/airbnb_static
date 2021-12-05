@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function api(){
   const axiosInstance = axios.create({
-     baseURL: `http://localhost:3000/api/`
+    //  baseURL: `http://localhost:3000/api/`
   })
 
   //每个axios请求带上token(存在的话)

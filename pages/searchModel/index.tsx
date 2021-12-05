@@ -9,14 +9,17 @@ import {categoryType} from '../../types/category'
 import {productType} from '../../types/product'
 import NavRow from './component/NavRow'
 import Product from './component/Product'
+import {getProducts} from '../services/product'
+import {getCategories} from '../services/category'
+
 
 export async function getStaticProps<GetStaticProps>() {
-    const result = await api().get('/category')
-    const productReust = await api().get('/product')
+    const result = getCategories()
+    const productReust = getProducts()
     return{
         props:{
-            categoriesApi:result?result.data:[],
-            productsApi:productReust?productReust.data:[],
+            categoriesApi:result?result:[],
+            productsApi:productReust?productReust:[],
         }
     }   
 }
@@ -26,6 +29,9 @@ const Index = ({categoriesApi,productsApi}:InferGetStaticPropsType<typeof getSta
     const [products,setProducts] = useState([] as productType[])
     const [selCategory,setSelCategory] = useState('')
     const [selTag,setSelTag] = useState('')
+
+    // const categories = categoriesApi
+    // const products = productsApi
 
     useEffect(() => {
         setCategories(categoriesApi)
