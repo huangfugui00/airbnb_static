@@ -19,9 +19,12 @@ const Product = ({product}:productProp) => {
                     <Image className="rounded-xl object-contain md:object-scale-down " src={product.photos[0]} alt={product.id} layout="fill" objectFit="cover"/>
                     :
                     <></>
-                <IconButton className="absolute top-4 right-4 z-1 ">
-                <FavoriteBorderIcon sx={{ color: 'white' ,  }}  className="bg-opacity-30"/>
-                </IconButton>
+                    <div className="absolute top-4 right-4 z-1 ">
+                    <IconButton >
+                    <FavoriteBorderIcon sx={{ color: 'white'}}/>
+                    </IconButton>
+                    </div>
+               
             </div>
             {/* message */}
             <div className="flex flex-col">

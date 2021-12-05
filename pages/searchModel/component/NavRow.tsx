@@ -88,7 +88,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
 
                 {categories?categories.slice(0,number).map((category,index)=>
                 <div key={index} className="-ml-2.5">
-                    <Button className='rounded' onClick={()=>setSelCategory(category.name)}>
+                    <Button  onClick={()=>setSelCategory(category.name)}>
                     {selCategory===category.name&&<Image  src={category.icon} alt={category.name} layout="fixed" height={20} width={20}/>}
                     <span className={`ml-2 text-sm normal-case font-mono antialiased ${selCategory===category.name?'text-black':'text-gray-700' } `}>
                         {category.name}
@@ -98,7 +98,6 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
                 ):<></>}
 
                 <Button
-                 className='rounded'
                  id="basic-button"
                 aria-controls="basic-menu"
                 aria-haspopup="true"
@@ -117,30 +116,46 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
                 />
 
             </div>
-            {/* tag_button */}
-                {/* <p>{`${number} square width is ${width}px and weight ${container.width}px`}</p> */}
             <div className='flex gap-2'>
+                {/* <div className={` rounded-full text-sm normal-case ${selTag==='time'?'text-black 2px bg-grey-200':'text-grey-500 1px '}`}> */}
                 <Button  color="inherit" variant='outlined'
                 onClick={()=>setSelTag('time')}
-                sx={{borderRadius:'50px',fontSize:'0.875rem',textTransform:'none',
+                sx={{
+                borderRadius:'50px',fontSize:'0.875rem',textTransform:'none',
                 borderColor:`${selTag==='time'?'black':'rgba(209, 213, 219,1)'}`,
                 borderWidth:`${selTag==='time'?'2px':'1px'}`,
                 backgroundColor:`${selTag==='time'?'rgba(209, 213, 219,0.2)':'white'}`,
                 }}
                 >
                     <span className="text-black">Anytime</span>
-                    {selTag==='time'?<ExpandLessIcon fontSize="small" className='hidden lg:block'/>:<ExpandMoreIcon fontSize="small" className='hidden lg:block' />}
+                    <div className='hidden lg:block'>
+                    {selTag==='time'?<ExpandLessIcon fontSize="small" />:<ExpandMoreIcon fontSize="small"  />}
+                    </div>
                 </Button>
+                {/* </div> */}
+               
                 <Button color="inherit" variant='outlined' 
                 onClick={()=>setSelTag('guest')}
-                className={`rounded-full text-sm normal-case ${selTag==='guest'?'bg-gray-100 border-2 border-black text-black':'border-gray-300 text-grey-500'}`}
+                sx={{
+                    borderRadius:'50px',fontSize:'0.875rem',textTransform:'none',
+                    borderColor:`${selTag==='guest'?'black':'rgba(209, 213, 219,1)'}`,
+                    borderWidth:`${selTag==='guest'?'2px':'1px'}`,
+                    backgroundColor:`${selTag==='guest'?'rgba(209, 213, 219,0.2)':'white'}`,
+                    }}
                 >
                     <span className="text-black">Guests</span>
-                    {selTag==='guest'?<ExpandLessIcon fontSize="small" className='hidden lg:block'/>:<ExpandMoreIcon fontSize="small" className='hidden lg:block'/>}
+                    <div className='hidden lg:block'>
+                    {selTag==='guest'?<ExpandLessIcon fontSize="small" />:<ExpandMoreIcon fontSize="small" />}
+                    </div>
                 </Button>
                 <Button color="inherit" variant='outlined' 
                 onClick={()=>setSelTag('fiters')}
-                className={`rounded-full text-sm normal-case ${selTag==='fiters'?'bg-gray-100 border-2 border-black text-black':'border-gray-300 text-grey-500'}`}
+                sx={{
+                    borderRadius:'50px',fontSize:'0.875rem',textTransform:'none',
+                    borderColor:`${selTag==='fiters'?'black':'rgba(209, 213, 219,1)'}`,
+                    borderWidth:`${selTag==='fiters'?'2px':'1px'}`,
+                    backgroundColor:`${selTag==='fiters'?'rgba(209, 213, 219,0.2)':'white'}`,
+                    }}
                 >
                     {selTag==='fiters'?<FilterListOffIcon fontSize="small"/>:<FilterListIcon fontSize="small"/>}
                     <span className="text-black hidden lg:block">Filters</span>
