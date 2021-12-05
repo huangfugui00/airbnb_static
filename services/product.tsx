@@ -1,5 +1,5 @@
 import {v4 as uuidv4} from 'uuid'
-import {productType} from '../../types/product'
+import {productType} from '../types/product'
 const products=[
     {
         id : uuidv4(),

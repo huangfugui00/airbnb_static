@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import {v4 as uuidv4} from 'uuid'
-import {categoryType} from '../../types/category'
+import {categoryType} from '../types/category'
 
 const category = [
     {
-        id : uuidv4(),
+        id : uuidv4() ,
         name:'Offbeat',
         icon:'/assets/category_icon/Offbeat.jpg'
     },

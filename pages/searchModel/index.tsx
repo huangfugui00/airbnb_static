@@ -1,16 +1,14 @@
 import React ,{useState,useEffect} from 'react'
-import styles from './index.module.scss'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import useSWR from 'swr'
 import { InferGetStaticPropsType } from 'next'
-import api from '../services/api'
 import {categoryType} from '../../types/category'
 import {productType} from '../../types/product'
 import NavRow from './component/NavRow'
 import Product from './component/Product'
-import {getProducts} from '../services/product'
-import {getCategories} from '../services/category'
+import {getProducts} from '../../services/product'
+import {getCategories} from '../../services/category'
 
 
 export async function getStaticProps<GetStaticProps>() {

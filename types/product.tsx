@@ -1,5 +1,5 @@
 export type productType = {
-    uuid:string,
+    id:string,
     location:string,
     price:number,
     photos:string[],
