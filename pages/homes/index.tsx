@@ -39,7 +39,7 @@ const Index = ({categoriesApi,productsApi}:InferGetStaticPropsType<typeof getSta
     return (
         <div>
         <Header container={'my-container-big'}/>
-        <main className={`my-container-big  mb-8`}>
+        <main className={`my-8  my-container-big `}>
             <NavRow 
             categories={categories} 
             selCategory={selCategory}  setSelCategory={setSelCategory}

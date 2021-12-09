@@ -65,7 +65,7 @@ const Room = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStaticP
     return (
         <div className="relative">
             <Header container={container}/>
-            <main className={container}>
+            <main className={`${container} mt-8`} >
             {/* summary */}
             <Summary title={product.title} location={product.location}/>
 

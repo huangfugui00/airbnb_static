@@ -10,7 +10,7 @@ type summaryProp = {
 }
 const Summary = ({title,location}:summaryProp) => {
     return (
-        <div>
+        <div className="mt-8">
             <h1 className="text-2xl font-semibold" >{title}</h1>
             {/* avg-start review-number */}
             <div className="flex justify-between items-center mt-4 mb-6">

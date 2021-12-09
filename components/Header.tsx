@@ -34,13 +34,12 @@ const Header = ({container}:headerProp) => {
         ranges.selection.endDate&&setEndDate(ranges.selection.endDate)
     }
     return (
-        <div className="border-b mb-8">
+        <div className="border-b ">
         <header className={`${styles.header} ${container}`}>
             <div className={styles.brand}>
             <Link href="/">
                 <a>
                 <Image src="/assets/airbnb.png"
-                // <Image src="https://links.papareact.com/qd3"
                objectFit="contain"
                objectPosition="left"
                layout="fill"

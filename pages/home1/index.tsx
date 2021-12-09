@@ -7,8 +7,6 @@ import Nearby from '../../components/Nearby'
 import MediumCard from '../../components/MediumCard'
 import LargerCart from '../../components/LargerCart'
 import Footer from '../../components/Footer'
-// const HttpsProxyAgent = require('https-proxy-agent');
-// const nodeFetch = require('node-fetch');
 import { mediumCartType } from '../../types/mediumCart'
 
 // const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:7890');
@@ -74,7 +72,6 @@ export async function getStaticProps<GetStaticProps>() {
             mediumCartsApi
         }
     }    
-
 }
 
 

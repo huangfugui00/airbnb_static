@@ -39,7 +39,7 @@ const Index = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStatic
         <div>
             <Header container={container}/>
            
-            <main className={`${container} md:grid md:grid-cols-12`}>
+            <main className={`${container} mt-12 md:grid md:grid-cols-12`}>
                 {/* user identify */}
                 <div className="col-span-4 mr-8">
                     <Identify/>
