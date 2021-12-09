@@ -1,5 +1,6 @@
 import {v4 as uuidv4} from 'uuid'
 import {productType} from '../types/product'
+
 const products=[
     {
         id : uuidv4(),
@@ -204,6 +205,32 @@ const products=[
 ] as productType[]
 
 
+const productDetail={
+    id : uuidv4(),
+    location:'Ei Nido',
+    title:'Leafy Greens Chiangmai : Mushroom M5',
+    price:682,
+    photos:[
+        '/assets/productDetail/pic1.webp',
+        '/assets/productDetail/pic2.jpg',
+        '/assets/productDetail/pic3.jpg',
+        '/assets/productDetail/pic4.jpg',
+        '/assets/productDetail/pic5.jpg',
+    ],
+    category:'Offbeat',
+    intro:'Nacpan Glamping is located on one of the top rated beaches in Asia, ‘Nacpan Beach’, El Nido, Palawan. Stretching 4.2km, this white sand beach is fast becoming a World renowned must see destination in the Philippines.',
+    userId:{
+        id:uuidv4(),
+        name:'Nacpan',
+        avatar:'/assets/avatar/avatar.webp'
+    }
+} as productType
+
+
 export const getProducts=()=>{
     return products
+}
+
+export const getProdcutDetail = ()=>{
+    return productDetail
 }

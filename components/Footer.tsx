@@ -1,10 +1,15 @@
 import React from 'react'
 import styles from './footer.module.scss'
 
-const Footer = () => {
+type headerProp = {
+    container:string
+}
+
+
+const Footer = ({container}:headerProp) => {
     return (
         <div className='bg-gray-50'>
-        <div className={`${styles.footer} container mx-auto gap-4 justify-items-start lg:justify-items-between grid grid-cols-2 lg:grid-cols-4 `}>
+        <div className={`${styles.footer} ${container} gap-4 justify-items-start lg:justify-items-between grid grid-cols-2 lg:grid-cols-4 `}>
             <div>
                 <h5>About</h5>
                 <p>How Airbnb work</p>

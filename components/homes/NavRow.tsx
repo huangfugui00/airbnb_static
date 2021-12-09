@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import {categoryType} from '../../../types/category'
+import {categoryType} from '../../types/category'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -116,7 +116,7 @@ const NavRow = ({categories,selCategory,setSelCategory,selTag,setSelTag}:navRowP
                 />
 
             </div>
-            <div className='flex gap-2'>
+            <div className='hidden sm:flex  gap-2 '>
                 {/* <div className={` rounded-full text-sm normal-case ${selTag==='time'?'text-black 2px bg-grey-200':'text-grey-500 1px '}`}> */}
                 <Button  color="inherit" variant='outlined'
                 onClick={()=>setSelTag('time')}

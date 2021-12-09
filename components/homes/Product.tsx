@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import {productType} from '../../../types/product'
+import {productType} from '../../types/product'
 import { IconButton } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';

@@ -11,7 +11,7 @@ type largeCartProp={
 }
 const LargerCart = ({img,title,description,btn_text}:largeCartProp) => {
     return (
-        <div className={`${styles.large_cart} sm:container mx-auto pl-4`}>
+        <div className={`${styles.large_cart} my-container mx-auto pl-4`}>
             <div className={styles.cart_img}>
                 <Image className={styles.img} src={img} objectFit="cover" layout='fill'/>
             </div>

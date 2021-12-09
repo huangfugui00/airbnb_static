@@ -14,7 +14,7 @@ const Banner = () => {
             />
            <div className={`${styles.middle}`}>
                 <p>Not sure where to go?Perfect.</p>
-               <Link href="/searchModel">
+               <Link href="/homes">
                 <a>
                     <Button className={styles.button}>flexible</Button>
                 </a>

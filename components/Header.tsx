@@ -13,7 +13,11 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
 
-const Header = () => {
+type headerProp = {
+    container:string
+}
+
+const Header = ({container}:headerProp) => {
 
     const [inputSearch,setInputSearch]= useState('')
     const [startDate,setStartDate] = useState(new Date())
@@ -31,7 +35,7 @@ const Header = () => {
     }
     return (
         <div className="border-b mb-8">
-        <header className={`${styles.header} sm:container mx-auto`}>
+        <header className={`${styles.header} ${container}`}>
             <div className={styles.brand}>
             <Link href="/">
                 <a>

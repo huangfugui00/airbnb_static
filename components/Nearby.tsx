@@ -9,7 +9,7 @@ type nearbyProp = {
 
 const Nearby = ({nearby}:nearbyProp) => {
     return (
-              <div className={`${styles.nearby} sm:container mx-auto`}>
+              <div className={`${styles.nearby} my-container mx-auto`}>
                 <h2>Explore Nearby</h2>
                 <div className={`${styles.sm_group} gap-4 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}>
                 {

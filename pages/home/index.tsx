@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useLayoutEffect } from 'react'
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import { InferGetStaticPropsType } from 'next'
@@ -14,7 +14,7 @@ import { mediumCartType } from '../../types/mediumCart'
 // const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:7890');
 
 // export async function getStaticProps<GetStaticProps>() {
-    
+
 //     console.log("getStaticProps()");
 //     let smallCarts = await nodeFetch('https://links.papareact.com/pyp', { agent: proxyAgent})
 //     smallCarts = await smallCarts.json();
@@ -35,13 +35,13 @@ import { mediumCartType } from '../../types/mediumCart'
 const Home = ({smallCarts,mediumCartsApi}:InferGetStaticPropsType<typeof getStaticProps>) => {
     const [nearby, setNearby] = useState([] as nearbyType[])
     const [mediumCarts, setMediumCarts] = useState([] as mediumCartType[])
-    useEffect(() => {
+    useLayoutEffect(() => {
         setNearby(smallCarts)
         setMediumCarts(mediumCartsApi)
     }, [])
     return (
         <div>
-            <Header/>
+            <Header container={'my-container-big'}/>
             <Banner/>
             <Nearby nearby={nearby}/>
             <MediumCard mediumCarts={mediumCarts}/>
@@ -51,7 +51,7 @@ const Home = ({smallCarts,mediumCartsApi}:InferGetStaticPropsType<typeof getStat
              description="Wishlist created by Airbnb"
              btn_text="Get Inspired"
              />
-             <Footer/>
+             <Footer container={'my-container-big'}/>
         </div>
     )
 }
