@@ -60,7 +60,7 @@ const Index = ({categoriesApi,productsApi}:InferGetStaticPropsType<typeof getSta
             </div>
             <div className="relative">
                 {/* products */}
-                <div className={`${mapList=='map'&& 'hidden'}  my-container-big col-span-12 xl:col-span-8 mt-8 gap-4 grid 2xl:grid-cols-5 xl:grid-cols-5 lg:grid-cols-3  sm:grid-cols-2 `}>
+                <div className={`${mapList=='map'&& 'hidden'}  my-container-big col-span-12 xl:col-span-8 mt-8 gap-4 grid  2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2 `}>
                     {products?products.map((product,index)=>
                     <Link href="/room" key={index}>
                         <a>

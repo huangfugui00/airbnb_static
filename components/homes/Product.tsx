@@ -15,7 +15,7 @@ const Product = ({product}:productProp) => {
         {product?
         <div className="flex flex-col gap-2 ">
             {/* image */}
-            <div className='relative  h-96 lg:h-72 md:h-72 sm:h-80 transform hover:-translate-y-1 hover:scale-105 transition duration-1000 ease-in-out'>
+            <div className='relative  h-96 xl:h-72   md:h-72 sm:h-80 transform hover:-translate-y-1 hover:scale-105 transition duration-1000 ease-in-out'>
                     <Image className="rounded-xl object-contain md:object-scale-down " src={product.photos[0]} alt={product.id} layout="fill" objectFit="cover"/>
                     :
                     <></>

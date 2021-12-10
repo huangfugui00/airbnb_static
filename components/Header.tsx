@@ -12,12 +12,25 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
+import UserMenu from './UserMenu'
 
 type headerProp = {
     container:string
 }
 
+
+
 const Header = ({container}:headerProp) => {
+
+
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const [inputSearch,setInputSearch]= useState('')
     const [startDate,setStartDate] = useState(new Date())
@@ -34,9 +47,9 @@ const Header = ({container}:headerProp) => {
         ranges.selection.endDate&&setEndDate(ranges.selection.endDate)
     }
     return (
-        <div className="border-b ">
-        <header className={`${styles.header} ${container}`}>
-            <div className={styles.brand}>
+        <div className="border-b py-4">
+        <header className={`flex justify-between items-center ${container}`}>
+            <div className='relative h-8 w-24 lg:h-12 lg:w-32'>
             <Link href="/">
                 <a>
                 <Image src="/assets/airbnb.png"
@@ -48,27 +61,36 @@ const Header = ({container}:headerProp) => {
             </Link>
             </div>
             {/* search */}
-            <div className={styles.search}>
+            <div className="mx-24 flex-auto  hidden md:flex items-center border rounded-lg pl-2 ">
                 <input placeholder="search" value={inputSearch}
-                onChange={(e)=>setInputSearch(e.target.value)}/>
+                onChange={(e)=>setInputSearch(e.target.value)}
+                className="w-full focus:outline-none"/>
                 <IconButton>
                 <SearchIcon sx={{color:'white',backgroundColor:'red',borderRadius:'50%',cursor:'pointer'}}/>
                 </IconButton>
             </div>
             {/* icon_group  */}
-            <div className={styles.icon_group}>
-                <Button variant="text" className={styles.host}>Become a host</Button>
+            <div className='flex' >
+                <div className="hidden lg:block">
+                <Button variant="text"
+                sx={{textTransform:'none',color:'black',fontWeight:'600',borderRadius:'50px'}}
+                >Become a host
+                </Button>
+                </div>
                 <IconButton>
                 <LanguageIcon fontSize="medium" />
                 </IconButton>
-                <span className={styles.menu_person}>
+                <div className="border rounded-full cursor-pointer"
+                onClick={handleClick}
+                >
                     <IconButton>
                     <MenuIcon fontSize="medium"  />
                     </IconButton>
                     <IconButton>
                     <PersonPinIcon fontSize="medium" />
                     </IconButton>
-                </span>
+                </div>
+                <UserMenu open={open} anchorEl={anchorEl} handleClose={handleClose}/>
             </div>
 
             {/* Calender */}
@@ -101,10 +123,7 @@ const Header = ({container}:headerProp) => {
                 />
                 </div>
             </div>
-            {/* button_groups */}
-            {/* <div className={styles.}> */}
-
-            {/* </div> */}
+        
         </div>
         }
 
