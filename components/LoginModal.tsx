@@ -19,7 +19,7 @@ type loginModalProp={
     handleClose:()=>void
 }
 
-const regions=    {
+const regions : {[key: string]: string} =    {
     'Afghanistan (+93)':'+93',
     'Åland Islands (+358)':'+358',
     'Albania (+355)':'+355',
@@ -38,13 +38,12 @@ const regions=    {
 
 
 const LoginModal = ({open,handleClose}:loginModalProp) => {
-    const [region, setRegion] = React.useState('China');
+    const [region, setRegion] = useState('China (+86)') 
     const matches = useMediaQuery('(min-width:600px)');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRegion(event.target.value);
       };
-
       
     return (
         <div className="relative">
