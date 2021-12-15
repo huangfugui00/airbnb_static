@@ -1,4 +1,4 @@
-import React , {useState,useEffect}from 'react'
+import React , {useState,useContext}from 'react'
 import Image from 'next/image'
 import styles from './header.module.scss'
 import SearchIcon from '@mui/icons-material/SearchOutlined';
@@ -13,6 +13,8 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
 import UserMenu from './UserMenu'
+import { supabase } from '../utils/supabaseClient'
+import {authContext} from '../pages/_app'
 
 type headerProp = {
     container:string
@@ -21,7 +23,7 @@ type headerProp = {
 
 
 const Header = ({container}:headerProp) => {
-
+    const {auth} = useContext(authContext)
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -74,6 +76,7 @@ const Header = ({container}:headerProp) => {
                 <div className="hidden lg:block">
                 <Button variant="text"
                 sx={{textTransform:'none',color:'black',fontWeight:'600',borderRadius:'50px'}}
+               
                 >Become a host
                 </Button>
                 </div>
@@ -81,7 +84,7 @@ const Header = ({container}:headerProp) => {
                 <LanguageIcon fontSize="medium" />
                 </IconButton>
                 <div className="border rounded-full cursor-pointer"
-                onClick={handleClick}
+                    onClick={handleClick}
                 >
                     <IconButton>
                     <MenuIcon fontSize="medium"  />

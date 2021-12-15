@@ -10,6 +10,7 @@ import { InferGetStaticPropsType } from 'next'
 import {productType} from '../../types/product'
 import {commentType} from '../../types/comment'
 
+
 export async function getStaticProps<GetStaticProps>() {
     const product = getProdcutDetail()
     const comments = getComments()
