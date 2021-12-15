@@ -13,6 +13,8 @@ import MyInput from './MyInput'
 import MyButton from './MyButton'
 import { useMediaQuery } from '@material-ui/core';
 import ReactLoading from 'react-loading';
+import Router from 'next/router' 
+
 
 type loginModalProp={
     open:boolean,

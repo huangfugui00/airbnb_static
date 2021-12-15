@@ -13,7 +13,7 @@ const MyInput = ({prefix,placeholder,value,setValue}:myInputProp) => {
             <span className="text-xs font-serif">{placeholder}</span>
             <div className="flex items-center gap-2 ">
                 <span className="font-mono ">{prefix}</span>
-                <input className="w-full focus:outline-none"  value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setValue(e.target.value)}></input>
+                <input className="w-full focus:outline-none"  value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>)=>setValue?setValue(e.target.value):console.log(e)}></input>
             </div>
         </div>
     )
