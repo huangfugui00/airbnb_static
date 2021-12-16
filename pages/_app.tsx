@@ -17,6 +17,7 @@ export const authContext = createContext({} as authContextType)
 function MyApp({ Component, pageProps }: AppProps) {
   const [auth,setAuth]=usePersistedState('auth',{} as authType)
 
+
   useEffect(() => {
      setAuth({session:supabase.auth.session()})
 

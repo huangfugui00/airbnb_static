@@ -1,4 +1,4 @@
-import React , {useState,useContext}from 'react'
+import React , {useState,useEffect,useContext}from 'react'
 import Image from 'next/image'
 import styles from './header.module.scss'
 import SearchIcon from '@mui/icons-material/SearchOutlined';
@@ -6,6 +6,8 @@ import LanguageIcon from '@mui/icons-material/Language';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import IconButton from '@mui/material/IconButton'
+import Badge from '@mui/material/Badge'
+import Avatar from '@mui/material/Avatar'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Button from '@mui/material/Button'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -13,18 +15,17 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
 import UserMenu from './UserMenu'
-import { supabase } from '../utils/supabaseClient'
 import {authContext} from '../pages/_app'
+import {supabase} from '../utils/supabaseClient'
+import userServices from '../services/user'
 
 type headerProp = {
     container:string
 }
 
-
-
 const Header = ({container}:headerProp) => {
     const {auth} = useContext(authContext)
-
+    const [avatar,setAvatar] = useState('')
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -48,6 +49,21 @@ const Header = ({container}:headerProp) => {
         ranges.selection.startDate&&setStartDate(ranges.selection.startDate)
         ranges.selection.endDate&&setEndDate(ranges.selection.endDate)
     }
+
+    
+    useEffect(() => {
+        async function getProfile(){
+            const result =await userServices.getProfile()
+            if(!result.status){
+                return 
+            }
+            setAvatar(result.data.avatar_url)
+        }
+        if(auth.session){         
+            getProfile()   
+        }
+    }, [auth])
+
     return (
         <div className="border-b py-4">
         <header className={`flex justify-between items-center ${container}`}>
@@ -90,7 +106,15 @@ const Header = ({container}:headerProp) => {
                     <MenuIcon fontSize="medium"  />
                     </IconButton>
                     <IconButton>
-                    <PersonPinIcon fontSize="medium" />
+                    {auth.session?  
+                    <Badge color="secondary" variant="dot">
+                        {avatar? 
+                        <Avatar alt="Remy Sharp" src={avatar} sx={{width:'24px',height:'24px'}}/>
+                        :
+                         <PersonPinIcon  sx={{color:'red'}} fontSize="medium" />
+                        }
+                    </Badge>
+                    : <PersonPinIcon fontSize="medium" />}
                     </IconButton>
                 </div>
                 <UserMenu open={open} anchorEl={anchorEl} handleClose={handleClose}/>

@@ -13,7 +13,6 @@ import MyInput from './MyInput'
 import MyButton from './MyButton'
 import { useMediaQuery } from '@material-ui/core';
 import ReactLoading from 'react-loading';
-import Router from 'next/router' 
 
 
 type loginModalProp={
@@ -53,9 +52,8 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
             setLoading(true)
             await ssoAuth(provider)
         }finally{
-            // setLoading(false)
+            setLoading(false)
         }
-       
     }
     
       
@@ -112,7 +110,7 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
                        
                         {/* <span className="animate-spin h-5 w-5 mr-3">{loading ? 'Loading' : 'Send magic link'}</span> */}
                         {loading&&<div className="flex justify-center">
-                        <ReactLoading type="spin" color="red" height={30} width={30} />
+                            <ReactLoading type="spin" color="red" height={30} width={30} />
                         </div>}
                         {/* sso login */}
                         <div className="mt-4">

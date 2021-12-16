@@ -25,7 +25,7 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
     return(
         <div>
             {
-                auth.session?
+               ! auth.session?
                 <Menu
             anchorEl={anchorEl}
             open={open}
@@ -51,36 +51,51 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
                 <span className="text-sm my-1 mr-24">Host an experience</span>
             </MenuItem>
             <MenuItem onClick={handleSignOut}>
-                <span className="text-sm  my-1"  >Logout</span>
+                <span className="text-sm  my-1"  >Help</span>
             </MenuItem>
-        </Menu>:
+        </Menu>
+        :
         <Menu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        sx={{margin:"10px 0",borderRadius:'50rem'}}
-    >
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            sx={{margin:"10px 0",borderRadius:'50rem'}}
+        >
         <MenuItem
             onClick={handleLoginModalOpen}
         >
-            <span className="text-sm font-semibold my-1">SignUp</span>
+            <span className="text-sm font-semibold my-1">Message</span>
         </MenuItem>
         <MenuItem>
-            <span className="text-sm my-1 ">Login</span>
+            <span className="text-sm my-1 font-semibold ">Notification</span>
+        </MenuItem>
+    
+        <MenuItem>
+            <span className="text-sm my-1 font-semibold ">Tips</span>
+        </MenuItem>
+        <MenuItem>
+            <span className="text-sm my-1 font-semibold mr-24">WishLists</span>
         </MenuItem>
         <Divider/>
         <MenuItem>
-            <span className="text-sm my-1 ">Host your home</span>
-        </MenuItem>
-        <MenuItem>
-            <span className="text-sm my-1 mr-24">Host an experience</span>
-        </MenuItem>
+                <span className="text-sm my-1 ">Host your home</span>
+            </MenuItem>
+            <MenuItem>
+                <span className="text-sm my-1 mr-24">Host an experience</span>
+            </MenuItem>
+            <MenuItem >
+                <span className="text-sm  my-1"  >Account</span>
+            </MenuItem>
+            <Divider/>
         <MenuItem>
             <span className="text-sm  my-1">Help</span>
         </MenuItem>
+        <MenuItem onClick={handleSignOut}>
+                <span className="text-sm  my-1"  >Logout</span>
+            </MenuItem>
     </Menu>
             }
         {/* login modal */}
