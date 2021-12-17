@@ -6,6 +6,7 @@ type myAvatarProp={
     size?:string
 }
 
+//component for display supabase avatar
 const MyAvatar = ({url,size}:myAvatarProp) => {
     const [avatarUrl, setAvatarUrl] = useState('')
     useEffect(() => {

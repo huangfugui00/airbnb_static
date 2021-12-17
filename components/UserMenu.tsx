@@ -2,6 +2,7 @@ import React, {useState,useContext} from 'react'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
+import Link from 'next/link'
 import LoginModal from './LoginModal'
 import {authContext} from '../pages/_app'
 import {supabase} from '../utils/supabaseClient'
@@ -85,9 +86,13 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
             <MenuItem>
                 <span className="text-sm my-1 mr-24">Host an experience</span>
             </MenuItem>
+            <Link href="/user/show">
+                <a>
             <MenuItem >
                 <span className="text-sm  my-1"  >Account</span>
             </MenuItem>
+            </a>
+            </Link>
             <Divider/>
         <MenuItem>
             <span className="text-sm  my-1">Help</span>

@@ -52,7 +52,6 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
             setLoading(true)
             await ssoAuth(provider)
         }finally{
-            setLoading(false)
         }
     }
     
@@ -109,13 +108,16 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
                         </div>
                        
                         {/* <span className="animate-spin h-5 w-5 mr-3">{loading ? 'Loading' : 'Send magic link'}</span> */}
-                        {loading&&<div className="flex justify-center">
+                        {loading?<div className="flex justify-center">
                             <ReactLoading type="spin" color="red" height={30} width={30} />
-                        </div>}
+                        </div>
+                        :<></>}
                         {/* sso login */}
                         <div className="mt-4">
                             <button className="mb-4 flex items-center w-full border rounded-lg border-2 px-2 py-2 cursor-pointer hover:border-black"
-                              onClick={()=>handleSsoLogin('github')}
+                              onClick={()=>{
+                                  handleSsoLogin('github')
+                                }}
                             >
                                 <GitHubIcon />
                                 
