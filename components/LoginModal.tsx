@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField'
-import FacebookSharpIcon from '@mui/icons-material/FacebookSharp';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import AppleIcon from '@mui/icons-material/Apple';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -117,9 +117,9 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
                             <button className="mb-4 flex items-center w-full border rounded-lg border-2 px-2 py-2 cursor-pointer hover:border-black"
                               onClick={()=>handleSsoLogin('github')}
                             >
-                                <FacebookSharpIcon sx={{color:'blue'}}/>
+                                <GitHubIcon />
                                 
-                                <span className="w-full text-center text-sm font-serif">Continue with Facebook</span>
+                                <span className="w-full text-center text-sm font-serif">Continue with Github</span>
                             </button>
                             <button className="mb-4 flex items-center w-full border rounded-lg border-2 px-2 py-2 cursor-pointer hover:border-black"
                             >

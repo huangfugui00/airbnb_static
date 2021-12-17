@@ -65,7 +65,6 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
             sx={{margin:"10px 0",borderRadius:'50rem'}}
         >
         <MenuItem
-            onClick={handleLoginModalOpen}
         >
             <span className="text-sm font-semibold my-1">Message</span>
         </MenuItem>

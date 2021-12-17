@@ -11,7 +11,7 @@ const userServices = {
         }
         let { data, error, status } = await supabase
           .from('profiles')
-          .select(`username, website, avatar_url`)
+          .select(`*`)
           .eq('id', user.id)
           .single()
         if (error && status !== 406) {
@@ -19,6 +19,16 @@ const userServices = {
         }
         return {status:1,message:"fetch data sucess", data}
     },
+
+    async getProfiles(){
+        let { data, error, status } = await supabase
+          .from('profiles')
+          .select(`username, website, avatar_url`)
+        if (error && status !== 406) {
+            return {status:0,message:"fetch data wrong"}
+        }
+        return {status:1,message:"fetch data sucess", data}
+    }
   
 }
 
