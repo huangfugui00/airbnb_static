@@ -15,6 +15,7 @@ const ModalAvatar = ({file,open,handleClose,uploadAvatar,loading}:modalAvatar) =
     if(!file){
         return <></>
     }
+
     const url =URL.createObjectURL(file) 
     return(
         <div className="relative">

@@ -7,15 +7,12 @@ type inputFileProp={
 const InputFile = ({loading,handleOnChange}:inputFileProp) => {
  
     return (
-            <div>
+            <div className="relative">
                 <label className="underline text-sm text-center cursor-pointer" htmlFor="single">
                     {loading ? 'Uploading ...' : 'Upload Avatar'}
                 </label>
                 <input
-                style={{
-                    visibility: 'hidden',
-                    position: 'absolute',
-                }}
+                className="hidden "
                 type="file"
                 id="single"
                 accept="image/*"

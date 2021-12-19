@@ -14,7 +14,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
 import UserMenu from './UserMenu'
-import {authContext,profileContext} from '../pages/_app'
+import {profileContext} from '../pages/_app'
 import {supabase} from '../utils/supabaseClient'
 import MyAvatar from '../components/MyAvatar'
 
@@ -95,8 +95,8 @@ const Header = ({container}:headerProp) => {
                     {/* {auth.session?   */}
                     {user?  
                     <Badge color="secondary" variant="dot">
-                        {profile.avatar? 
-                        <MyAvatar url={profile.avatar} size='24px'/>
+                        {profile.avatar_url? 
+                        <MyAvatar url={profile.avatar_url} size='24px'/>
                         :
                          <PersonPinIcon  sx={{color:'red'}} fontSize="medium" />
                         }

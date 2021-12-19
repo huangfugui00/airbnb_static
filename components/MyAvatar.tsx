@@ -26,9 +26,7 @@ const MyAvatar = ({url,size}:myAvatarProp) => {
         }
       }, [url])
     return (
-        <div>
             <Avatar src={avatarUrl} sx={{width:size,height:size }}></Avatar>
-        </div>
     )
 }
 

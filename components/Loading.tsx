@@ -3,15 +3,16 @@ import ReactLoading from 'react-loading';
 
 
 type loadingProp={
-    loading:boolean
+    loading:boolean,
     size?:number
+    color?:string,
+    type?: "blank" | "balls" | "bars" | "bubbles" | "cubes" | "cylon" | "spin" | "spinningBubbles" | "spokes"
 }
-const Loading = ({loading,size}:loadingProp) => {
+const Loading = ({loading,size,color,type}:loadingProp) => {
     return (
         <div>
              {loading?<div className="flex justify-center">
-                            {size?<ReactLoading type="spin" color="red" height={size} width={size} />:
-                            <ReactLoading type="spin" color="red" height={30} width={30} />}
+                            <ReactLoading type={type?type:"spin"} color={color?color:"red"} height={size?size:30} width={size?size:30} />
                         </div>
                         :<></>}
         </div>

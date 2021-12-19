@@ -2,7 +2,7 @@ import 'tailwindcss/tailwind.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../styles/global.css'
 import type { AppProps } from 'next/app'
-import { useEffect,createContext } from 'react';
+import { useEffect,createContext, useState } from 'react';
 import { supabase } from '../utils/supabaseClient'
 import usePersistedState from '../utils/persistence'
 import {authType} from '../types/auth'
@@ -21,8 +21,10 @@ export const authContext = createContext({} as authContextType)
 export const profileContext = createContext({} as profileContextType )
 
 function MyApp({ Component, pageProps }: AppProps) {
+  // const [auth,setAuth]=useState({} as authType)
   const [auth,setAuth]=usePersistedState('auth',{} as authType)
   const [profile,setProfile]=usePersistedState('profile',{} as profileType)
+  // const [profile,setProfile]=useState({} as profileType)
 
 
   useEffect(() => {
@@ -43,12 +45,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           const data ={
             id:result.data.id,
             username:result.data.username,
-            avatar:result.data.avatar_url,
+            avatar_url:result.data.avatar_url,
             work:result.data.work,
             location:result.data.location,
-          }
-          setProfile(data)
-          console.log(profile)
+            about:result.data.about,
+          } as profileType
+          setProfile(result.data)
         }
       }
       else{
