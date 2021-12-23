@@ -60,6 +60,7 @@ const Header = ({container}:headerProp) => {
             <Link href="/">
                 <a>
                 <Image src="/assets/airbnb.png"
+                alt="brand"
                objectFit="contain"
                objectPosition="left"
                layout="fill"

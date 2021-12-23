@@ -15,25 +15,25 @@ import {getProfile} from '../actions/profileActions'
 const WrapApp=({ Component, pageProps ,router}: AppProps)=>{
   const dispatch = useDispatch()
   useEffect(() => {
-    if(supabase.auth.session()){
-      dispatch({
-        type: USER_LOGIN_SUCCESS,
-        payload: JSON.stringify(supabase.auth.session()),
-      })
-      sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
-      dispatch(getProfile())
-    }
-    
-   supabase.auth.onAuthStateChange((_event, session) => {
-    if(supabase.auth.session()){
-      dispatch({
-        type: USER_LOGIN_SUCCESS,
-        payload: JSON.stringify(supabase.auth.session()),
-      })
-      sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
-      dispatch(getProfile())
-    }
-   })
+      if(supabase.auth.session()){
+        dispatch({
+          type: USER_LOGIN_SUCCESS,
+          payload: JSON.stringify(supabase.auth.session()),
+        })
+        sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
+        dispatch(getProfile())
+      }
+      
+     supabase.auth.onAuthStateChange((_event, session) => {
+      if(supabase.auth.session()){
+        dispatch({
+          type: USER_LOGIN_SUCCESS,
+          payload: JSON.stringify(supabase.auth.session()),
+        })
+        sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
+        dispatch(getProfile())
+      }
+     })
  }, [dispatch])
 
  return(

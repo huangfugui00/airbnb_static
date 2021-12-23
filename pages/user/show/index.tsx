@@ -26,7 +26,7 @@ const User = () => {
         if(!session){
             router.push("/");
         }
-    },[session])
+    },[session,router])
 
     return (
     <div>

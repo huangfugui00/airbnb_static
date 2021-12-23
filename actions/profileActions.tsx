@@ -9,7 +9,7 @@ import {
 
 import {profileType} from '../types/profile'
 import userServices from '../services/user'
-import {supabase} from '../utils/supabaseClient'
+import {supabase} from '../utils/supabaseClient.js'
 import {IRootState} from '../utils/store'
 
 

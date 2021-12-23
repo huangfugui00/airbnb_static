@@ -1,4 +1,6 @@
 import React ,{useState,useEffect,useLayoutEffect,useRef} from 'react'
+
+import StickyTop from '../../components/StickyTop'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { InferGetStaticPropsType } from 'next'
@@ -49,7 +51,11 @@ const Index = ({categoriesApi,productsApi}:InferGetStaticPropsType<typeof getSta
 
     return (
         <div>
-        <Header container={'my-container-big'}/>
+            <StickyTop>
+            <Header container={'my-container-big '}/>
+            </StickyTop>
+            {/* <div className="fixed right-0 top-0 left-0 z-100 bg-white ">
+            </div> */}
         <main className={`my-8`}>
             <div className=" my-container-big">
             <NavRow 

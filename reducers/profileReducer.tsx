@@ -30,17 +30,3 @@ import {
         return state 
     }
   }
-
-
-  // export const profileUpdateReducer = (state = {} as profileReduxType, action:any) => {
-  //   switch (action.type) {
-  //     case PROFILE_UPDATE_REQUEST:
-  //       return { loading: true } as profileReduxType
-  //     case PROFILE_UPDATE_SUCCESS:
-  //       console.log(action.payload)
-  //       return { loading: false, profile: action.payload } as profileReduxType
-  //     default:
-  //       console.log('default update')
-  //       return state
-  //   }
-  // }

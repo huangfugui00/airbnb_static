@@ -87,14 +87,9 @@ const Room = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStaticP
                 <div  className=" hidden md:block col-start-9 col-span-4  sticky top-8 " >
                     <Checkout price={product.price} startDate={startDate} endDate={endDate}/>
                 </div>
-
-        
             </div>
 
-            
-
             <hr className="border-grey-700"/>
-
 
             {/* comments */}
             <Comment comments={comments}/>

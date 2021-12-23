@@ -10,8 +10,3 @@ export type authType = {
 //     session:Session | null,
 //     loading:boolean,
 // }
-
-
-// export type authType = {
-//     session:Session | null,
-// }

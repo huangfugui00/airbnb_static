@@ -1,5 +1,4 @@
 import React,{useState,useLayoutEffect,useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Identify from '../../components/user/Identify'
@@ -30,11 +29,6 @@ const Index = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStatic
     const [product,setProduct] = useState({} as productType)
     const [comments,setComments] =  useState([] as commentType[])
     
-    const dispatch = useDispatch()
-
-   
-    
-
     useLayoutEffect(() => {
         if(productApi)
             setProduct(productApi)

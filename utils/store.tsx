@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware ,Store} from 'redux'
 import thunk from 'redux-thunk'
-import {createWrapper, Context} from 'next-redux-wrapper';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   userLoginReducer,
@@ -27,17 +26,6 @@ const store = createStore(
 
 
 
-export const makeStore = (context: Context) => {
-  const store = createStore(reducer, applyMiddleware(...middleware));
-
-
-  return store;
-};
-
-
-
-
 export type IRootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch
 export default store
-// export const wrapper = createWrapper<Store<IRootState>>(makeStore, {debug: true});
