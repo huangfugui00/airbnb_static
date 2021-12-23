@@ -5,24 +5,20 @@ import type { AppProps } from 'next/app'
 import { useEffect,createContext, useState } from 'react';
 import { Provider } from 'react-redux'
 import store from '../utils/store'
-import {wrapper} from '../utils/store'
 import { supabase } from '../utils/supabaseClient'
-import usePersistedState from '../utils/persistence'
-import {authType} from '../types/auth'
-import {profileType} from '../types/profile'
 import { useDispatch, useSelector } from 'react-redux'
 import {USER_LOGIN_SUCCESS} from '../constants/authConstants'
 import {getProfile} from '../actions/profileActions'
 
 
 
-const WrapApp=({ Component, pageProps }: AppProps)=>{
+const WrapApp=({ Component, pageProps ,router}: AppProps)=>{
   const dispatch = useDispatch()
   useEffect(() => {
     if(supabase.auth.session()){
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: supabase.auth.session(),
+        payload: JSON.stringify(supabase.auth.session()),
       })
       sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
       dispatch(getProfile())
@@ -32,13 +28,13 @@ const WrapApp=({ Component, pageProps }: AppProps)=>{
     if(supabase.auth.session()){
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: supabase.auth.session(),
+        payload: JSON.stringify(supabase.auth.session()),
       })
       sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
       dispatch(getProfile())
     }
    })
- }, [])
+ }, [dispatch])
 
  return(
   <Component {...pageProps} />
@@ -46,13 +42,12 @@ const WrapApp=({ Component, pageProps }: AppProps)=>{
 
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
-
+function MyApp({ Component, pageProps,router }: AppProps) {
 
 
   return (
       <Provider store={store}>
-        <WrapApp Component={Component} pageProps={pageProps} />
+        <WrapApp Component={Component} pageProps={pageProps} router={router} />
         {/* <Component {...pageProps} /> */}
       </Provider>
     )

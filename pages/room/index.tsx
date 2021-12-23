@@ -41,7 +41,7 @@ const Room = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStaticP
         if(commentsApi){
             setComments(commentsApi)
         }
-    }, [])
+    }, [productApi,commentsApi])
     const container = 'my-container'
     const ref = useRef<HTMLDivElement>(null) 
 

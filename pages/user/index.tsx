@@ -41,7 +41,7 @@ const Index = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStatic
         if(commentsApi){
             setComments(commentsApi)
         }
-    }, [])
+    }, [productApi,commentsApi])
     return (
         <div>
             <Header container={container}/>

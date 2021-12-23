@@ -35,7 +35,7 @@ const Index = ({categoriesApi,productsApi}:InferGetStaticPropsType<typeof getSta
     useLayoutEffect(() => {
         setCategories(categoriesApi)
         setProducts(productsApi)
-    }, [])
+    }, [categoriesApi,productsApi])
 
     const handleClickMapList = ()=>{
         if(mapList==='map'){

@@ -4,7 +4,6 @@ import {
     USER_LOGOUT,
   } from '../constants/authConstants'
 
-  import {ssoAuth} from '../services/auth'
 
   import {supabase} from '../utils/supabaseClient'
 
