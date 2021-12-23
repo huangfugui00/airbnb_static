@@ -6,3 +6,8 @@ export type profileType={
     about:string,
     avatar_url:string,
 }
+
+export type profileReduxType={
+    loading:boolean,
+    profile:profileType
+}

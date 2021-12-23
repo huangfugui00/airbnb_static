@@ -13,7 +13,9 @@ import MyInput from './MyInput'
 import MyButton from './MyButton'
 import { useMediaQuery } from '@material-ui/core';
 import ReactLoading from 'react-loading';
-
+import { useDispatch, useSelector } from 'react-redux'
+import { loginWithSso } from '../actions/authActions'
+import {IRootState} from '../utils/store'
 
 type loginModalProp={
     open:boolean,
@@ -39,21 +41,17 @@ const regions : {[key: string]: string} =    {
 
 
 const LoginModal = ({open,handleClose}:loginModalProp) => {
+
+    const userLoginReducer = useSelector((state:IRootState) => state.userLoginReducer)
+    const { loading } = userLoginReducer
+    const dispatch = useDispatch()
+
     const [region, setRegion] = useState('China (+86)') 
-    const [loading, setLoading] = useState(false)
     const matches = useMediaQuery('(min-width:600px)');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRegion(event.target.value);
       };
-
-    const handleSsoLogin =async (provider:string)=>{
-        try{
-            setLoading(true)
-            await ssoAuth(provider)
-        }finally{
-        }
-    }
     
       
     return (
@@ -106,8 +104,7 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
                         <span className="text-sm text-gray-400"> or</span>
                         <div className="h-px bg-gray-200 w-1/2"></div>
                         </div>
-                       
-                        {/* <span className="animate-spin h-5 w-5 mr-3">{loading ? 'Loading' : 'Send magic link'}</span> */}
+                
                         {loading?<div className="flex justify-center">
                             <ReactLoading type="spin" color="red" height={30} width={30} />
                         </div>
@@ -116,7 +113,8 @@ const LoginModal = ({open,handleClose}:loginModalProp) => {
                         <div className="mt-4">
                             <button className="mb-4 flex items-center w-full border rounded-lg border-2 px-2 py-2 cursor-pointer hover:border-black"
                               onClick={()=>{
-                                  handleSsoLogin('github')
+                                //   handleSsoLogin('github')
+                                dispatch(loginWithSso('github'))
                                 }}
                             >
                                 <GitHubIcon />

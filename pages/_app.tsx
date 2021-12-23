@@ -3,73 +3,60 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '../styles/global.css'
 import type { AppProps } from 'next/app'
 import { useEffect,createContext, useState } from 'react';
+import { Provider } from 'react-redux'
+import store from '../utils/store'
+import {wrapper} from '../utils/store'
 import { supabase } from '../utils/supabaseClient'
 import usePersistedState from '../utils/persistence'
 import {authType} from '../types/auth'
 import {profileType} from '../types/profile'
-import userServices from '../services/user'
+import { useDispatch, useSelector } from 'react-redux'
+import {USER_LOGIN_SUCCESS} from '../constants/authConstants'
+import {getProfile} from '../actions/profileActions'
 
-type authContextType = {
-  auth:authType
-  setAuth:(auth:authType)=>void,
+
+
+const WrapApp=({ Component, pageProps }: AppProps)=>{
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if(supabase.auth.session()){
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: supabase.auth.session(),
+      })
+      sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
+      dispatch(getProfile())
+    }
+    
+   supabase.auth.onAuthStateChange((_event, session) => {
+    if(supabase.auth.session()){
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: supabase.auth.session(),
+      })
+      sessionStorage.setItem('airbnb_session', JSON.stringify(supabase.auth.session()))
+      dispatch(getProfile())
+    }
+   })
+ }, [])
+
+ return(
+  <Component {...pageProps} />
+ )
+
 }
-type profileContextType={
-  profile:profileType,
-  setProfile:(profile:profileType)=>void,
-}
-export const authContext = createContext({} as authContextType)
-export const profileContext = createContext({} as profileContextType )
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const [auth,setAuth]=useState({} as authType)
-  const [auth,setAuth]=usePersistedState('auth',{} as authType)
-  const [profile,setProfile]=usePersistedState('profile',{} as profileType)
-  // const [profile,setProfile]=useState({} as profileType)
 
 
-  useEffect(() => {
-     setAuth({session:supabase.auth.session()})
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setAuth({session:supabase.auth.session()})
-    })
-  }, [])
-
-  useEffect(()=>{
-    const getProfile = async()=>{
-      if(auth.session){
-        const result = await userServices.getProfile()
-        if(!result.status){
-            return
-        }
-        if(result.data){
-          const data ={
-            id:result.data.id,
-            username:result.data.username,
-            avatar_url:result.data.avatar_url,
-            work:result.data.work,
-            location:result.data.location,
-            about:result.data.about,
-          } as profileType
-          setProfile(result.data)
-        }
-      }
-      else{
-        const data ={
-          id:'null'
-        } as profileType
-        setProfile(data)
-      }
-    }
-    getProfile()
-  },[auth])
 
   return (
-    <authContext.Provider value={ { auth,setAuth} }>
-      <profileContext.Provider value={ { profile,setProfile} }>
-      <Component {...pageProps} />
-      </profileContext.Provider>
-    </authContext.Provider>
+      <Provider store={store}>
+        <WrapApp Component={Component} pageProps={pageProps} />
+        {/* <Component {...pageProps} /> */}
+      </Provider>
     )
 }
+
 
 export default MyApp

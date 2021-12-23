@@ -14,17 +14,20 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker ,RangeKeyDict} from 'react-date-range';
 import Link from 'next/link'
 import UserMenu from './UserMenu'
-import {profileContext} from '../pages/_app'
-import {supabase} from '../utils/supabaseClient'
 import MyAvatar from '../components/MyAvatar'
+import { useDispatch, useSelector } from 'react-redux'
+import {IRootState} from '../utils/store'
 
 type headerProp = {
     container:string
 }
 
 const Header = ({container}:headerProp) => {
-    const user = supabase.auth.user()
-    const {profile} = useContext(profileContext)
+    const userLoginReducer = useSelector((state:IRootState) => state.userLoginReducer)
+    const { session } = userLoginReducer
+    const profileReducer = useSelector((state:IRootState) => state.profileReducer)
+    const {profile} = profileReducer
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -93,7 +96,7 @@ const Header = ({container}:headerProp) => {
                     </IconButton>
                     <IconButton>
                     {/* {auth.session?   */}
-                    {user?  
+                    {session&&profile?  
                     <Badge color="secondary" variant="dot">
                         {profile.avatar_url? 
                         <MyAvatar url={profile.avatar_url} size='24px'/>

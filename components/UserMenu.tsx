@@ -1,12 +1,12 @@
 import React, {useState,useContext} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
 import Link from 'next/link'
 import LoginModal from './LoginModal'
-import {authContext} from '../pages/_app'
-import {supabase} from '../utils/supabaseClient'
-
+import {logout} from '../actions/authActions'
+import {IRootState} from '../utils/store'
 
 type userMenuProp = {
     open:boolean,
@@ -14,19 +14,17 @@ type userMenuProp = {
     handleClose:()=>void,
 }
 const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
-    const {auth} = useContext(authContext)
-
+    const dispatch = useDispatch()
+    const userLoginReducer = useSelector((state:IRootState) => state.userLoginReducer)
+    const { session } = userLoginReducer
     const [loginModalOpen,setLoginModalOpen] = useState(false)
     const handleLoginModalOpen = () => setLoginModalOpen(true);
     const handleLoginModalClose = () => setLoginModalOpen(false);
-    const handleSignOut = ()=>{
-        supabase.auth.signOut()
-    }
 
     return(
         <div>
             {
-               ! auth.session?
+               !session?
                 <Menu
             anchorEl={anchorEl}
             open={open}
@@ -35,7 +33,7 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             sx={{margin:"10px 0",borderRadius:'50rem'}}
-        >
+            >
             <MenuItem
                 onClick={handleLoginModalOpen}
             >
@@ -51,7 +49,7 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
             <MenuItem>
                 <span className="text-sm my-1 mr-24">Host an experience</span>
             </MenuItem>
-            <MenuItem onClick={handleSignOut}>
+            <MenuItem>
                 <span className="text-sm  my-1"  >Help</span>
             </MenuItem>
         </Menu>
@@ -97,7 +95,7 @@ const UserMenu = ({open,anchorEl,handleClose}:userMenuProp)=>{
         <MenuItem>
             <span className="text-sm  my-1">Help</span>
         </MenuItem>
-        <MenuItem onClick={handleSignOut}>
+        <MenuItem onClick={()=>dispatch(logout())}>
                 <span className="text-sm  my-1"  >Logout</span>
             </MenuItem>
     </Menu>

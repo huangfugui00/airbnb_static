@@ -7,18 +7,22 @@ import MyAvatar from '../../MyAvatar'
 import InputFile from '../../InputFile'
 import MyButton from '../../MyButton';
 import ControlEdit from './ControlEdit';
-
+import {updateAvatar} from '../../../actions/profileActions'
+import { useDispatch, useSelector } from 'react-redux'
+import {IRootState} from '../../../utils/store'
 
 type identifyProp={
     username:string,
     avatar:string,
     editProfile:boolean,
     setEditProfile:(editProfile:boolean)=>void,
-    handleUploadAvatar:(file:File)=>void
 }
 
-const Identify = ({username,avatar,editProfile,setEditProfile,handleUploadAvatar}:identifyProp) => {
-    const [loading,setLoading] = useState(false)
+const Identify = ({username,avatar,editProfile,setEditProfile}:identifyProp) => {
+    const dispatch = useDispatch()
+    const profileReducer = useSelector((state:IRootState) => state.profileReducer)
+    const {loading} = profileReducer
+
     const [modalOpen,setModalOpen] = useState(false)
     const [file,setFile] = useState<File>()
     const mdQuery = useMediaQuery('(min-width:1024px)');
@@ -26,7 +30,6 @@ const Identify = ({username,avatar,editProfile,setEditProfile,handleUploadAvatar
     //Input onChange
     const uploadAvatar = (event:React.ChangeEvent<HTMLInputElement>)=>{
         if (!event.target.files || event.target.files.length === 0) {
-            // throw new Error('You must select an image to upload.')
             return
           }
         const file = event.target.files[0]
@@ -36,9 +39,7 @@ const Identify = ({username,avatar,editProfile,setEditProfile,handleUploadAvatar
 
     // 对上传头像进行包装，以处理页面逻辑
     const handleUploadAvatarEvent=async(file:File)=>{
-        setLoading(true)
-        await handleUploadAvatar(file)
-        setLoading(false)
+        await dispatch(updateAvatar(file))
         setModalOpen(false)
     }
    

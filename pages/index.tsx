@@ -10,16 +10,23 @@ import MediumCard from '../components/home/MediumCard'
 import LargerCart from '../components/home/LargerCart'
 import { InferGetStaticPropsType } from 'next'
 import { mediumCartType } from '../types/mediumCart'
-
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const Index = ({smallCarts,mediumCartsApi}:InferGetStaticPropsType<typeof getStaticProps>) => {
+
+ 
   const [nearby, setNearby] = useState([] as nearbyType[])
   const [mediumCarts, setMediumCarts] = useState([] as mediumCartType[])
+
   useLayoutEffect(() => {
       setNearby(smallCarts)
       setMediumCarts(mediumCartsApi)
   }, [])
+
+
+
+
   return (
     <div>
     <Head>
@@ -49,7 +56,6 @@ const Index = ({smallCarts,mediumCartsApi}:InferGetStaticPropsType<typeof getSta
 
 export async function getStaticProps<GetStaticProps>() {
 
-  console.log("getStaticProps()");
   const smallCarts = await fetch('https://links.papareact.com/pyp')
   .then(res=>res.json())
 

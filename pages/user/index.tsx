@@ -1,4 +1,5 @@
-import React,{useState,useLayoutEffect} from 'react'
+import React,{useState,useLayoutEffect,useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Identify from '../../components/user/Identify'
@@ -9,6 +10,7 @@ import {getComments} from '../../services/comment'
 import { InferGetStaticPropsType } from 'next'
 import {productType} from '../../types/product'
 import {commentType} from '../../types/comment'
+
 
 
 export async function getStaticProps<GetStaticProps>() {
@@ -27,7 +29,11 @@ const Index = ({productApi,commentsApi}:InferGetStaticPropsType<typeof getStatic
 
     const [product,setProduct] = useState({} as productType)
     const [comments,setComments] =  useState([] as commentType[])
- 
+    
+    const dispatch = useDispatch()
+
+   
+    
 
     useLayoutEffect(() => {
         if(productApi)

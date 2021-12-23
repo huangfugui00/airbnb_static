@@ -3,28 +3,35 @@ import Mybutton from '../../MyButton'
 import MyInput from '../../MyInput'
 import Loading from '../../Loading'
 import {profileType} from '../../../types/profile'
+import { useDispatch, useSelector } from 'react-redux'
+import {updateProfile} from '../../../actions/profileActions'
+import {IRootState} from '../../../utils/store'
 
 type EditProfileProp={
-    saving:boolean,
     CurrentAbout:string,
     CurrentLocation:string,
     CurrentWork:string,
     handelCancel:()=>void,
-    handleSaveProfile:( profile:profileType)=>void,
 }
 
-const EditProfile = ({saving,CurrentAbout,CurrentLocation,CurrentWork,handelCancel,handleSaveProfile}:EditProfileProp) => {
+const EditProfile = ({CurrentAbout,CurrentLocation,CurrentWork,handelCancel}:EditProfileProp) => {
+    const dispatch = useDispatch()
+    const profileReducer = useSelector((state:IRootState) => state.profileReducer)
+    const {loading} = profileReducer
+
     const [about,setAbout]=useState(CurrentAbout)
     const [location,setLocation]=useState(CurrentLocation)
     const [work,setWork]=useState(CurrentWork)
 
-    const onSaveEvent=()=>{
+    const onSaveEvent= async ()=>{
         const profileUpdate={
             about,
             location,
             work,
         } as profileType
-        handleSaveProfile(profileUpdate)
+
+        await dispatch(updateProfile(profileUpdate))
+        handelCancel()
     }
     
     return (
@@ -62,18 +69,16 @@ const EditProfile = ({saving,CurrentAbout,CurrentLocation,CurrentWork,handelCanc
                     Cancel
                 </div>
                 {
-                    !saving?
+                    !loading?
                     <Mybutton className="bg-black text-white px-4 py-2 rounded-lg"
                     onClick={onSaveEvent}
                     >
                         Save
                     </Mybutton>:
-                    <Loading loading={saving} type="balls" color="black" size={40}/>
+                    <Loading loading={loading} type="balls" color="black" size={40}/>
                 }
                
             </div>
-
-
         </div>
     )
 }
